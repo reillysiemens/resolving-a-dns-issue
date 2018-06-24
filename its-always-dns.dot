@@ -1,0 +1,18 @@
+digraph G {
+    graph [ splines=ortho nodesep=2 fontcolor="#fdf4c1" ];
+    node [ style=filled color="#282828" fillcolor="#282828", fontcolor="#fdf4c1" ];
+    edge [ color="#282828" fontcolor="#282828" ];
+
+    is_it_dns [shape=diamond label="Is it DNS?"];
+    check_bad_records [shape=box label="Check DNS for Bad Records"];
+    is_it_resolved [shape=diamond label="Is the Issue Resolved?"];
+    you_missed_something [shape=box label="You Obviously Missed Something"];
+    its_always_dns [shape=box label="It's Always DNS"];
+
+    is_it_dns -> check_bad_records [xlabel="Yes"];
+    check_bad_records -> is_it_resolved;
+    is_it_resolved -> its_always_dns [xlabel="Yes"];
+    is_it_resolved -> you_missed_something [xlabel="No"];
+    you_missed_something -> check_bad_records;
+    you_missed_something -> is_it_dns [xlabel="No"];
+}
